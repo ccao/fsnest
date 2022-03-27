@@ -5,8 +5,8 @@
 	$(F90) $(F90FLAGS) -fpp -c -I$(MKLINCLUDE) -I../modules $<
 
 
-F90=mpif90
-F90FLAGS=-D__MPI -O3 -msse3 -axSSE4.2
+F90=mpiifort
+F90FLAGS=-D__MPI -O3 -xHost
 
 MKLINCLUDE=$(MKLROOT)/include
 MKLLIBS=-L$(MKLROOT)/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core

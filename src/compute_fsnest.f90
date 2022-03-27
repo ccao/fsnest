@@ -1,9 +1,9 @@
 SUBROUTINE compute_fsnest(fsn, qv) 
   !
-  use constants, only : dp, eps9, cmplx_0, cmplx_i, stdout
+  use constants, only : dp, eps6, cmplx_0, cmplx_i, stdout
   use para,      only : first_k, last_k, para_merge, inode
   use banddata,  only : kvec, nbnd, fs, nkpt
-  use input,     only : omega, eps
+  use input,     only : eps
   !
   implicit none
   !
@@ -18,7 +18,7 @@ SUBROUTINE compute_fsnest(fsn, qv)
   !
   do ik=first_k, last_k
     !
-    if (fs(ik).ne.0) then
+    if (fs(ik).gt.eps6) then
       !
       ikv(:)=kvec(:, ik)
       jkv(:)=ikv(:)+qv(:)

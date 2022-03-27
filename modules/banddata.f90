@@ -6,7 +6,7 @@ MODULE banddata
   !
   real(dp) ef
   real(dp), allocatable :: kvec(:, :)
-  integer, allocatable :: fs(:)   ! # of fermi surface sheets at ik
+  real(dp), allocatable :: fs(:)   ! # of fermi surface sheets at ik
   integer nbnd
   integer nkx, nky, nkz
   integer nkpt  ! = nkx*nky*nkz = dimension of kvec

@@ -1,6 +1,6 @@
 include ../make.sys
 
-objects = input.o flib.o  interpolate_bands.o calc_occ.o compute_fsnest.o output_fsnest.o
+objects = input.o flib.o  interpolate_bands.o compute_fsnest.o output_fsnest.o
 
 LIBS = ../modules/mod.a
 

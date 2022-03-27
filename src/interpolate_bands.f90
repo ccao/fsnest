@@ -15,7 +15,6 @@ SUBROUTINE interpolate_bands
   complex(dp) fact
   complex(dp), allocatable :: work(:,:)
   real(dp), allocatable :: e(:)
-  real(dp) calc_occ
   !
   integer ir, ik, info, ii
   !
@@ -39,9 +38,9 @@ SUBROUTINE interpolate_bands
     call heev(work, e, 'N', 'U', info)
     !
     do ii=1, norb
-      if(abs(e(ii)-ef)<eps) then
-        fs(ik)=fs(ik)+1
-      endif
+      !
+      fs(ik)=fs(ik)+exp(-((e(ii)-ef)/eps)**2)
+      !
     enddo
     !
   enddo ! ik

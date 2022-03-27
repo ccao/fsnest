@@ -6,7 +6,7 @@ MODULE input
   !
   integer nqpt
   real(dp), allocatable :: qvec(:, :)
-  real(dp) temp, omega, eps
+  real(dp) eps
   character(len=80) seed
   !
 CONTAINS
@@ -18,8 +18,6 @@ CONTAINS
   !line 1: seed name
   !line 2: fermi level
   !line 3: nqx nqy nqz
-  !line 4: temperature
-  !line 5: omega
   !line 6: epsilon
   !line 7: mode
   !line 8: ...
@@ -44,24 +42,22 @@ CONTAINS
     !
     read(fin, *) ef
     read(fin, *) nkx, nky, nkz
-    read(fin, *) temp
-    read(fin, *) omega
     read(fin, *) eps
     read(fin, *) mode
+    !
+    write(*,*) "EPS is:", eps
+    !
   endif
   !
   CALL para_sync(ef)
   CALL para_sync(nkx)
   CALL para_sync(nky)
   CALL para_sync(nkz)
-  CALL para_sync(temp)
-  CALL para_sync(omega)
   CALL para_sync(eps)
   CALL para_sync(mode)
   !
   nkpt=nkx*nky*nkz
   !
-  if (temp<0) temp=0.d0
   if (eps<eps9) eps=eps4
   !
   select case (mode)
